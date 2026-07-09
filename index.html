@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,7 @@
     <title>製作七夕粿！</title>
     <style>
         body {
-           
+            
             /* 4. 置中對齊 */
             background-position: center top;
             background-repeat: no-repeat;
@@ -16,12 +17,17 @@
             padding: 20px;
         } /* 修正閉合括號 */
 
-        /* 設定標題顏色與大小 */
+        /* ==================== 
+           調整：標題一列且置中 
+           ==================== */
         h1 {
             text-align: center; /* 讓內容居中 */
             color: #e99e9d;
             font-size: 60px; /* 標題字體大小 */
+            margin-top: 40px; /* 增加上方留白 */
             margin-bottom: 50px;
+            white-space: nowrap; /* 強制文字不換行，維持在一列 */
+            word-break: keep-all; /* 確保中文字詞不被拆開 */
         }
 
         /* 設定段落文字大小 */
@@ -102,26 +108,23 @@
         </div>
     </div>
       
-   </div> <!-- 補上 content 閉合標籤 -->
+   </div>
 
     <!-- ==================== 
        控制滾動偵測的 JavaScript 
        ==================== -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 建立滾動偵測器
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // 當元素有 15% 進入畫面時就觸發動畫
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                     }
                 });
             }, {
-                threshold: 0.15 // 觸發靈敏度
+                threshold: 0.15
             });
 
-            // 自動尋找畫面上所有帶有 .fade-in-section 的區塊並開始偵測
             const sections = document.querySelectorAll('.fade-in-section');
             sections.forEach(sec => observer.observe(sec));
         });
